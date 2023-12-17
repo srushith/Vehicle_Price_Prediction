@@ -1,3 +1,89 @@
-<h1>
-Hello World
-</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  <style>
+    body {
+      background-color: #f0f0f0; /* Set a background color */
+      font-family: 'Arimo', sans-serif; /* Change the default font */
+    }
+
+    .login {
+      margin: 0 auto; /* Center align the form */
+      width: 300px; /* Set a width for the form */
+      padding: 40px;
+      background-color: #fff; /* Set a background color for the form */
+      border-radius: 5px; /* Add some rounded corners */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+    }
+
+    .login h1 {
+      font-family: 'Open Sans Condensed', sans-serif; /* Change the font for the heading */
+      text-align: center; /* Center align the heading */
+      color: #333; /* Set a color for the heading */
+      margin: 0; /* Remove default margin */
+      margin-bottom: 10px; /* Add margin bottom for space */
+      font-size: 40px; /* Adjust font size */
+    }
+
+    input[type="text"],
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #4CAF50; /* Add a green background color to the button */
+      color: white; /* Set text color to white */
+      cursor: pointer; /* Show a pointer cursor on hover */
+    }
+
+    button:hover {
+      background-color: #45a049; /* Darken the background color on hover */
+    }
+
+    .prediction-text {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 3px;
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="login">
+    <h1>Vehicle Price Prediction</h1>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_api')}}" method="post">
+      <input type="text" name="year" placeholder="Year" required="required" /><br>
+      <input type="text" name="fuelConsump_per_100km" placeholder="FuelConsump_per_100km" required="required" /><br>
+      <input type="text" name="kilometers" placeholder="Kilometers" required="required" /><br>
+      <input type="text" name="brand" placeholder="Brand" required="required" /><br>
+      <input type="text" name="transmission" placeholder="Transmission" required="required" /><br>
+      <input type="text" name="drive" placeholder="Drive" required="required" /><br>
+      <input type="text" name="fuel" placeholder="Fuel" required="required" /><br>
+      <input type="text" name="body_style" placeholder="Body Style" required="required" /><br>
+      <input type="text" name="seats" placeholder="Seats" required="required" /><br>
+      <input type="text" name="engine" placeholder="Engine" required="required" /><br>
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    <div class="prediction-text">
+      {{prediction_text}}
+    </div>
+  </div>
+</body>
+
+</html>
